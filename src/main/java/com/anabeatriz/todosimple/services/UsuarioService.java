@@ -1,24 +1,18 @@
 package com.anabeatriz.todosimple.services;
 
 import com.anabeatriz.todosimple.models.Usuario;
-import com.anabeatriz.todosimple.repositories.TarefasRepository;
 import com.anabeatriz.todosimple.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
-import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private TarefasRepository tarefasRepository;
 
     public Usuario findById(Long id) {
         Optional<Usuario> usuario = this.usuarioRepository.findById(id);
@@ -31,7 +25,6 @@ public class UserService {
     public Usuario create(Usuario obj) {
         obj.setId(null);
         obj = this.usuarioRepository.save(obj);
-        this.tarefasRepository.saveAll(obj.getTarefas());
         return obj;
     }
 
@@ -50,5 +43,4 @@ public class UserService {
             throw new RuntimeException("Não é possível excluir pois não há tarefas relacionadas!");
         }
     }
-
 }
