@@ -1,9 +1,11 @@
 package com.anabeatriz.todosimple.controllers;
 
+import com.anabeatriz.todosimple.models.Tarefas;
 import com.anabeatriz.todosimple.models.Usuario;
 import com.anabeatriz.todosimple.services.UsuarioService;
 import jakarta.servlet.Servlet;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
@@ -48,4 +51,5 @@ public class UsuarioController {
         this.usuarioService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 }

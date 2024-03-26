@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +25,11 @@ public class TarefasService {
         return tarefas.orElseThrow(() -> new RuntimeException (
                 "Tarefa não encontrada! id: " + id + ", Tipo: " + Tarefas.class.getName()));
 
+    }
+
+    public List<Tarefas> findAllByUserId(Long usuarioId) {
+        List<Tarefas> tarefas = this.tarefasRepository.findByUsuario_Id(usuarioId);
+        return tarefas;
     }
 
     @Transactional
@@ -51,8 +57,4 @@ public class TarefasService {
             throw new RuntimeException("Não é possível excluir pois não há entidades relacionadas!");
         }
     }
-
-
-
-
 }
