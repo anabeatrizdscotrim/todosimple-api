@@ -10,11 +10,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = Tarefas.TABLE_NAME)
-public class Tarefas {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Tarefas {
     public static final String TABLE_NAME = "tarefas";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true)
     private Long id;
 

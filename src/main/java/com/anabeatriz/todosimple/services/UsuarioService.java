@@ -35,6 +35,7 @@ public class UsuarioService {
         return this.usuarioRepository.save(newObj);
     }
 
+
     public void delete(Long id){
         findById(id);
         try {
