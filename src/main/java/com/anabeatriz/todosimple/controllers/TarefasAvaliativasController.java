@@ -5,11 +5,11 @@ import com.anabeatriz.todosimple.models.TarefasAvaliativas;
 import com.anabeatriz.todosimple.services.TarefasAvaliativasService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,6 +29,16 @@ public class TarefasAvaliativasController {
     public ResponseEntity<List<TarefasAvaliativas>> findAllByUserId(@PathVariable Long usuarioId) {
         List<TarefasAvaliativas> tarefasAvaliativas = tarefasAvaliativasService.findAllByUserId(usuarioId);
         return ResponseEntity.ok(tarefasAvaliativas);
+    }
+
+    @GetMapping("/nota/{nota}")
+    public List<TarefasAvaliativas> findAllByNota(@PathVariable double nota) {
+        return tarefasAvaliativasService.findAllByNota(nota);
+    }
+
+    @GetMapping("/data-avaliacao/{data}")
+    public List<TarefasAvaliativas> findAllByDataAvaliacao(@PathVariable Date data) {
+        return tarefasAvaliativasService.findAllByDataAvaliacao(data);
     }
 
     @PostMapping

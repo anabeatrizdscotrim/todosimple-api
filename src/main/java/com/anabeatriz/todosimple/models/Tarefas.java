@@ -1,6 +1,7 @@
 package com.anabeatriz.todosimple.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,7 @@ public abstract class Tarefas {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false, updatable = false)
+    @JsonBackReference
     private Usuario usuario;
 
     @Column(name = "descricao", length = 255, nullable = false)

@@ -26,6 +26,14 @@ public class TarefasAvaliativas extends Tarefas {
     @NotNull
     private double nota;
 
+    public TarefasAvaliativas() {
+    }
+
+    public TarefasAvaliativas(Long id, Usuario usuario, String descricao, Date dataAvaliacao) {
+        super(id, usuario, descricao);
+        this.dataAvaliacao = dataAvaliacao;
+    }
+
     public Date getDataAvaliacao() {
         return dataAvaliacao;
     }

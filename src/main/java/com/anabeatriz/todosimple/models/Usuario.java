@@ -1,5 +1,6 @@
 package com.anabeatriz.todosimple.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -35,6 +36,7 @@ public class Usuario {
     private String password;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonManagedReference
     private List<Tarefas> tarefas = new ArrayList<Tarefas>();
 
     public List<Tarefas> getTarefas() {

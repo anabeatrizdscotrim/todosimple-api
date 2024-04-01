@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,14 @@ public class TarefasAvaliativasService implements TarefasService<TarefasAvaliati
     public List<TarefasAvaliativas> findAllByUserId(Long usuarioId) {
         List<TarefasAvaliativas> tarefasAvaliativas = this.tarefasAvaliativasRepository.findByUsuario_Id(usuarioId);
         return tarefasAvaliativas;
+    }
+
+    public List<TarefasAvaliativas> findAllByNota(double nota){
+        return tarefasAvaliativasRepository.findByNota(nota);
+    }
+
+    public List<TarefasAvaliativas> findAllByDataAvaliacao(Date dataAvaliacao) {
+        return tarefasAvaliativasRepository.findByDataAvaliacao(dataAvaliacao);
     }
 
     @Transactional
@@ -55,5 +64,4 @@ public class TarefasAvaliativasService implements TarefasService<TarefasAvaliati
             throw new RuntimeException("Não é possível excluir pois não há entidades relacionadas!");
         }
     }
-
 }

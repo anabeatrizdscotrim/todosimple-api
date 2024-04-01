@@ -15,10 +15,20 @@ public class TarefasRecorrentes extends Tarefas {
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date dataInicio;
+
     @Column(name = "data_fim", nullable = false)
     @Temporal(TemporalType.DATE)
     @NotNull
     private Date dataFim;
+
+    public TarefasRecorrentes() {
+    }
+
+    public TarefasRecorrentes(Long id, Usuario usuario, String descricao, Date dataInicio, Date dataFim) {
+        super(id, usuario, descricao);
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+    }
 
     public Date getDataInicio() {
         return dataInicio;
