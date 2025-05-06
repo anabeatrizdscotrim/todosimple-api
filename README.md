@@ -16,5 +16,3 @@ TodoSimple é uma aplicação de gerenciamento de tarefas desenvolvida em Java c
 - HeidiSQL: Ferramenta de gerenciamento de banco de dados MySQL.
 - Maven: Gerenciador de dependências.
 - Postman: Ferramenta para testar endpoints da API REST.
-
-### link do vídeo: https://youtu.be/EaNwW87a3kA
